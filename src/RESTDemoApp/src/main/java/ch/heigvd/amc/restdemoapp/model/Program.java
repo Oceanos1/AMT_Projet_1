@@ -10,5 +10,29 @@ package ch.heigvd.amc.restdemoapp.model;
  * @author Eddie
  */
 public class Program {
+    private final ProgramType programType;
+    private final Language language;
+    private final double version;
+    
+    public Program(ProgramType programType, Language language, double version){
+        this.programType = programType;
+        this.language = language;
+        this.version = version;
+    }
+
+    public ProgramType getProgramType() {
+        return programType;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public double getVersion() {
+        return version;
+    }
+    
+    
+    
     
 }
