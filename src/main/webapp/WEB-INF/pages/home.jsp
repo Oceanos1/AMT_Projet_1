@@ -14,13 +14,14 @@
             table{
                 margin-left:auto; 
                 margin-right:auto;
+                width: 500px;
             }
         </style>
 
         <title>JSP Page</title>
     </head>
     <body>
-        <table style="width:100%">
+        <table>
             <tr>
                 <th>Program ID</th>
                 <th>Language</th>
