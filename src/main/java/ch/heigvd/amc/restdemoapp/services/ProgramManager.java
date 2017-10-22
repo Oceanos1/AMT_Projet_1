@@ -30,7 +30,21 @@ public class ProgramManager implements IProgramManager{
 
     @Override
     public Boolean addProgram(Program program) {
-        return null;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (id, language, type, version) VALUES (?, ?, ?, ?)\");");
+            
+            pstmt.setInt(1, program.getId());
+            pstmt.setString(2, program.getLanguage().toString());
+            pstmt.setString(3, program.getProgramType().toString());
+            pstmt.setDouble(4, program.getVersion());
+            
+            pstmt.executeUpdate();
+            connection.close();
+        }catch(SQLException ex){
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -46,6 +60,26 @@ public class ProgramManager implements IProgramManager{
     @Override
     public Program getProgram(int id) {
         return null;
+    }
+    
+    public List<Program> findAllPrograms() {
+        List<Program> programs = new ArrayList<>();
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM program");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                programs.add(new Program(
+                        rs.getInt("id"),
+                        ProgramType.valueOf(rs.getString("type")),
+                        Language.valueOf(rs.getString("language")),
+                        rs.getDouble("version")));
+            }
+            connection.close();
+        }catch(SQLException ex){
+
+        }
+        return programs;
     }
     
     public List<Program> findAllPrograms(Integer numberPerPage, Integer pageNumber) {

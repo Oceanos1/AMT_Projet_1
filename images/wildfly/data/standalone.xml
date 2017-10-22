@@ -144,7 +144,7 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-				<datasource jta="true" jndi-name="java:/jdbc/amt_program" pool-name="amt_programDS" enabled="true" use-ccm="true">
+				<datasource jta="true" jndi-name="java:/jdbc/amt_programs" pool-name="amt_programsDS" enabled="true" use-ccm="true">
                     <connection-url>jdbc:mysql://db:3306/amt_programs</connection-url>
                     <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql-connector-java-5.1.39.jar_com.mysql.jdbc.Driver_5_1</driver>

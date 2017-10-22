@@ -28,26 +28,28 @@ import javax.ws.rs.core.UriInfo;
 @Stateless
 @Path("/programs")
 public class ProgramResource {
-    @EJB
-    InMemoryDataStoreLocal inMemoryDataStore;
+    //@EJB
+    //InMemoryDataStoreLocal inMemoryDataStore;
     
     @Context
     UriInfo uriInfo;
-    
+    /*
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProgramDTO> getPrograms(@QueryParam = 'byName') String byName {
         List<Program> programs = inMemoryDataStore.findAllPrograms();
     }
-    
+    */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createProgram(ProgramDTO programDTO){
         Program program = fromDTO(programDTO);
+        return null;
     }
 
     public Program fromDTO(ProgramDTO programDTO) {
         return new Program(
+                programDTO.getId(),
                 programDTO.getProgramType(),
                 programDTO.getLanguage(),
                 programDTO.getVersion());
@@ -55,6 +57,7 @@ public class ProgramResource {
     
     public ProgramDTO toDTO(Program program){
         return new ProgramDTO(
+                program.getId(),
                 program.getProgramType(),
                 program.getLanguage(),
                 program.getVersion());

@@ -43,6 +43,15 @@ public interface IProgramManager {
      * @param pageNumber
      * @return
      */
+    public List<Program> findAllPrograms();
+
+    
+    /**
+     *
+     * @param numberPerPage
+     * @param pageNumber
+     * @return
+     */
     public List<Program> findAllPrograms(Integer numberPerPage, Integer pageNumber);
 
     /**
