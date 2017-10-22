@@ -10,12 +10,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            table{
+                margin-left:auto; 
+                margin-right:auto;
+            }
+        </style>
+
         <title>JSP Page</title>
     </head>
     <body>
-        <h1> Programs: </h1>
-         <c:forEach items="${listOfPrograms}" var="program">
-             <h1> ID ${program.getId()}: ${program.getLanguage().toString()} ${program.getProgramType().toString()} Version ${program.getVersion()} </h1>
-         </c:forEach>
+        <table style="width:100%">
+            <tr>
+                <th>Program ID</th>
+                <th>Language</th>
+                <th>Type</th>
+                <th>Version</th>
+            </tr>
+            <c:forEach items="${listOfPrograms}" var="program">
+                <tr>
+                    <td>${program.getId()}</td>
+                    <td>${program.getLanguage().toString()}</td>
+                    <td>${program.getProgramType().toString()}</td>
+                    <td>${program.getVersion()}</td>
+                </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>
