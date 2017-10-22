@@ -22,8 +22,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
- *
- * @author Eddie
+ * @author Michael Spierer
+ * @author Edward Ransome
  */
 @Stateless
 @Path("/programs")

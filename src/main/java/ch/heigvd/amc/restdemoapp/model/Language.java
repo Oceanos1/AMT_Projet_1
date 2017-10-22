@@ -6,8 +6,8 @@
 package ch.heigvd.amc.restdemoapp.model;
 
 /**
- *
- * @author Eddie
+ * @author Michael Spierer
+ * @author Edward Ransome
  */
 public enum Language {
     CPP("C++"),

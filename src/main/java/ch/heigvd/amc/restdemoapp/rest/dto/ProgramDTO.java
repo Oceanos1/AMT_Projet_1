@@ -9,8 +9,8 @@ import ch.heigvd.amc.restdemoapp.model.Language;
 import ch.heigvd.amc.restdemoapp.model.ProgramType;
 
 /**
- *
- * @author Eddie
+ * @author Michael Spierer
+ * @author Edward Ransome
  */
 public class ProgramDTO {
 

@@ -6,8 +6,8 @@
 package ch.heigvd.amc.restdemoapp.model;
 
 /**
- *
- * @author Eddie
+ * @author Michael Spierer
+ * @author Edward Ransome
  */
 public class Program {
     private final ProgramType programType;
