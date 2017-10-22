@@ -32,7 +32,7 @@ public class ProgramManager implements IProgramManager{
     public Boolean addProgram(Program program) {
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (id, language, type, version) VALUES (?, ?, ?, ?)\");");
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (id, language, type, version) VALUES (?, ?, ?, ?);");
             
             pstmt.setInt(1, program.getId());
             pstmt.setString(2, program.getLanguage().toString());
@@ -157,12 +157,15 @@ public class ProgramManager implements IProgramManager{
             Connection connection = dataSource.getConnection();
 
             for (int i = 0; i < n; i++) {
-                PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (language, type, version) VALUES (?, ?, ?)\");");
+                System.out.println("generating random " + i);
+                PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (language, type, version) VALUES (?, ?, ?);");
                 pstmt.setString(1, Language.getRandom().name());
                 pstmt.setString(2, ProgramType.getRandom().name());
                 pstmt.setDouble(3, 1);
+                pstmt.executeUpdate();
             }
         }catch(SQLException ex){
+            System.out.println(ex.getMessage());
             return false;
         }
         return true;
