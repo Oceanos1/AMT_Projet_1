@@ -14,12 +14,14 @@ import ch.heigvd.amc.restdemoapp.model.ProgramType;
  */
 public class ProgramDTO {
 
+    private int id;
     private ProgramType programType;
     private Language language;
     private double version;
     
        
-    public ProgramDTO(ProgramType programType, Language language, double version){
+    public ProgramDTO(int id, ProgramType programType, Language language, double version){
+        this.id = id;
         this.programType = programType;
         this.language = language;
         this.version = version;
@@ -27,6 +29,10 @@ public class ProgramDTO {
     
     public ProgramDTO(){
         
+    }
+
+    public int getId() {
+        return id;
     }
     
     public ProgramType getProgramType() {
@@ -39,6 +45,10 @@ public class ProgramDTO {
 
     public double getVersion() {
         return version;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
     public void setProgramType(ProgramType programType) {
