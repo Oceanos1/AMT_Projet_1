@@ -9,6 +9,8 @@ services:
      - "4848:4848"
   wildfly:
     build: ../images/wildfly
+    links:
+     - mysql:db
     ports:
      - "9090:8080"
      - "9990:9990"
@@ -16,3 +18,18 @@ services:
     build: ../images/tomcat
     ports:
      - "7070:8080"
+  mysql:
+    build: ../images/mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=1234
+    ports:
+     - "3306:3306"
+  phpmyadmin:
+    build: ../images/phpmyadmin
+    environment:
+     - MYSQL_ROOT_PASSWORD=1234
+    ports:
+     - "6060:80"
+    links:
+     - mysql:db
+
