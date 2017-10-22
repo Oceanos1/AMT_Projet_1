@@ -35,7 +35,7 @@ public interface IProgramManager {
      * @param id the id of a specific program
      * @return the specific program
      */
-    public Program getProgram(Integer id);
+    public Program getProgram(int id);
 
     /**
      *

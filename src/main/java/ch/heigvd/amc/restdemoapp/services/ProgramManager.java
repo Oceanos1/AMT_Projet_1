@@ -44,10 +44,10 @@ public class ProgramManager implements IProgramManager{
     }
 
     @Override
-    public Program getProgram(Integer id) {
+    public Program getProgram(int id) {
         return null;
     }
-
+    
     public List<Program> findAllPrograms(Integer numberPerPage, Integer pageNumber) {
         List<Program> programs = new ArrayList<>();
         try{
