@@ -5,6 +5,8 @@
  */
 package ch.heigvd.amc.restdemoapp.model;
 
+import java.util.Random;
+
 /**
  * @author Michael Spierer
  * @author Edward Ransome
@@ -16,8 +18,13 @@ public enum ProgramType {
     GUI("Graphical User Interface"),
     SERVER("Server"),
     SCRIPT("Script");
+
+    
     
     private final String name;
+    private static final ProgramType[] VALUES = values();
+    private static final int SIZE = VALUES.length;
+    private static final Random RANDOM = new Random();
     
     private ProgramType(String name){
         this.name = name;
@@ -26,5 +33,10 @@ public enum ProgramType {
     public String toString(){
         return this.name;
     }
+    
+    public static ProgramType getRandom() {
+        return VALUES[RANDOM.nextInt(SIZE)];
+    }
+
     
 }

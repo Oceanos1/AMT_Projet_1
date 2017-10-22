@@ -5,6 +5,8 @@
  */
 package ch.heigvd.amc.restdemoapp.model;
 
+import java.util.Random;
+
 /**
  * @author Michael Spierer
  * @author Edward Ransome
@@ -16,8 +18,12 @@ public enum Language {
     C("C"),
     COBOL("COBOL"),
     PHP("PHP");
+
     
     private final String name;
+    private static final Language[] VALUES = values();
+    private static final int SIZE = VALUES.length;
+    private static final Random RANDOM = new Random();
     
     private Language(String name){
         this.name = name;
@@ -26,5 +32,10 @@ public enum Language {
     public String toString(){
         return this.name;
     }
+    
+    public static Language getRandom() {
+        return VALUES[RANDOM.nextInt(SIZE)];
+    }
+
     
 }

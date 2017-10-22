@@ -152,6 +152,23 @@ public class ProgramManager implements IProgramManager{
     }
 
     @Override
+    public boolean generateRandomPrograms(int n){
+        try{
+            Connection connection = dataSource.getConnection();
+
+            for (int i = 0; i < n; i++) {
+                PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (language, type, version) VALUES (?, ?, ?)\");");
+                pstmt.setString(1, Language.getRandom().name());
+                pstmt.setString(2, ProgramType.getRandom().name());
+                pstmt.setDouble(3, 1);
+            }
+        }catch(SQLException ex){
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
     public Integer getTotalPrograms() {
         return null;
     }

@@ -59,5 +59,6 @@ public interface IProgramManager {
      */
     public Integer getTotalPrograms();
 
+    public boolean generateRandomPrograms(int n);
 
 }
