@@ -15,7 +15,7 @@
     <body>
         <h1> Programs: </h1>
          <c:forEach items="${listOfPrograms}" var="program">
-             <h1> ${program}.getLanguage() </h1>
+             <h1> ID ${program.getId()}: ${program.getLanguage()} ${program.getProgramType()} Version ${program.getVersion()} </h1>
          </c:forEach>
     </body>
 </html>
