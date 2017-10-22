@@ -10,15 +10,23 @@ package ch.heigvd.amc.restdemoapp.model;
  * @author Edward Ransome
  */
 public class Program {
-    private final ProgramType programType;
-    private final Language language;
-    private final double version;
+    private Integer id;
+    private ProgramType programType;
+    private Language language;
+    private double version;
     
     public Program(ProgramType programType, Language language, double version){
         this.programType = programType;
         this.language = language;
         this.version = version;
     }
+
+    public Program(Integer id,ProgramType programType, Language language, double version){
+        this(programType,language,version);
+        this.id = id;
+    }
+
+    public Integer getId(){ return id; }
 
     public ProgramType getProgramType() {
         return programType;
