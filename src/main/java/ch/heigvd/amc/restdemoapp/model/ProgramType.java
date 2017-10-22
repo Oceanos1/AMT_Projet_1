@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public enum ProgramType {
     WEBAPP("Web Application"),
-    APPLICATION("Applicatoin"),
+    APPLICATION("Application"),
     APPLET("Applet"),
     GUI("Graphical User Interface"),
     SERVER("Server"),
