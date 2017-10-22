@@ -37,7 +37,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        programManager.generateRandomPrograms(10);
+        //programManager.generateRandomPrograms(10);
         request.setAttribute("listOfPrograms", programManager.findAllPrograms());
         request.setAttribute("programsPerPage", 10);
         request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
