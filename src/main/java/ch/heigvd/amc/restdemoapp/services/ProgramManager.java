@@ -49,17 +49,64 @@ public class ProgramManager implements IProgramManager{
 
     @Override
     public Boolean removeProgram(int id) {
-        return null;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("DELETE FROM program WHERE program.id = ?");
+            
+            pstmt.setInt(1, id);
+            
+            pstmt.executeUpdate();
+            
+            connection.close();
+        }catch(SQLException ex){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public Boolean updateProgram(int id, Program program) {
-        return null;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("UPDATE program SET language = ?, type = ?, version = ? WHERE program.id = ?");
+            
+            pstmt.setString(1, program.getLanguage().name());
+            pstmt.setString(2, program.getProgramType().name());
+            pstmt.setDouble(3, program.getVersion());
+            pstmt.setInt(4, id);
+            
+            pstmt.executeUpdate();
+            
+            connection.close();
+        }catch(SQLException ex){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public Program getProgram(int id) {
-        return null;
+        Program result = null;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM program WHERE program.id = ?");
+            pstmt.setInt(1, id);
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                result = new Program(
+                        rs.getInt("id"),
+                        ProgramType.valueOf(rs.getString("type")),
+                        Language.valueOf(rs.getString("language")),
+                        rs.getDouble("version"));
+            }
+            
+            connection.close();
+        }catch(SQLException ex){
+
+        }
+        return result;
     }
     
     public List<Program> findAllPrograms() {
