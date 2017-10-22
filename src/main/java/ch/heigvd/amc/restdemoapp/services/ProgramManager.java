@@ -23,16 +23,38 @@ import javax.sql.DataSource;
  * @author Eddie
  */
 @Stateless
-public class ProgramManager {
+public class ProgramManager implements IProgramManager{
     
     @Resource(lookup = "java:/jdbc/amt_programs")
     private DataSource dataSource;
-    
-    public List<Program> findAllPrograms() {
+
+    @Override
+    public Boolean addProgram(Program program) {
+        return null;
+    }
+
+    @Override
+    public Boolean removeProgram(int id) {
+        return null;
+    }
+
+    @Override
+    public Boolean updateProgram(int id, Program program) {
+        return null;
+    }
+
+    @Override
+    public Program getProgram(Integer id) {
+        return null;
+    }
+
+    public List<Program> findAllPrograms(Integer numberPerPage, Integer pageNumber) {
         List<Program> programs = new ArrayList<>();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM program");
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM program LIMIT ? OFFSET ?");
+            pstmt.setInt(1, numberPerPage);
+            pstmt.setInt(2, pageNumber*numberPerPage);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 programs.add(new Program(
@@ -43,8 +65,14 @@ public class ProgramManager {
             }
             connection.close();
         }catch(SQLException ex){
-            
+
         }
         return programs;
     }
+
+    @Override
+    public Integer getTotalPrograms() {
+        return null;
+    }
+
 }
