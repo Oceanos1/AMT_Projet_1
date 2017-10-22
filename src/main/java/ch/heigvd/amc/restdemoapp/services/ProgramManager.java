@@ -157,7 +157,6 @@ public class ProgramManager implements IProgramManager{
             Connection connection = dataSource.getConnection();
 
             for (int i = 0; i < n; i++) {
-                System.out.println("generating random " + i);
                 PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (language, type, version) VALUES (?, ?, ?);");
                 pstmt.setString(1, Language.getRandom().name());
                 pstmt.setString(2, ProgramType.getRandom().name());
