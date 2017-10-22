@@ -22,6 +22,7 @@
     </head>
     <body>
         <table>
+
             <tr>
                 <th>Program ID</th>
                 <th>Language</th>
@@ -37,5 +38,14 @@
                 </tr>
             </c:forEach>
         </table>
+        <table>
+            <th> <a href="/AMT_Programs/home?page=<c:out value="${currentPage == 0 ? currentPage : currentPage - 1}" />" /> Prev.</th>
+            <th> Page <c:out value="${currentPage}" /> </th>
+            <th> <a href="/AMT_Programs/home?page=<c:out value="${currentPage + 1}" />" /> Next.</th>
+        </table>
+        <form action = "generate" method="post">
+            Number to generate:<input type = "number" name = "numberToGenerate"><br><br>
+            <input type = "submit" value = "Generate!">
+        </form>
     </body>
 </html>

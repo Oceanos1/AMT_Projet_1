@@ -19,12 +19,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddie
  */
-@WebServlet(name = "ProgramServlet", urlPatterns = {"/programs"})
-public class ProgramServlet extends HttpServlet {
+@WebServlet(name = "GenerateServlet", urlPatterns = {"/generate"})
+public class GenerateServlet extends HttpServlet {
     
     @EJB
     private IProgramManager programManager;
-
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -51,6 +51,9 @@ public class ProgramServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        programManager.generateRandomPrograms(Integer.parseInt(request.getParameter("numberToGenerate").toString()));
+        response.sendRedirect("/AMT_Programs/home");
     }
 
     /**

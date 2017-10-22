@@ -25,6 +25,9 @@ public class HomeServlet extends HttpServlet {
     @EJB
     private IProgramManager programManager;
     
+    static final int RESULTS_PER_PAGE = 10;
+
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -37,9 +40,13 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //programManager.generateRandomPrograms(10);
-        request.setAttribute("listOfPrograms", programManager.findAllPrograms());
-        request.setAttribute("programsPerPage", 10);
+        
+        int currentPage = 0;
+        if(request.getParameter("page") != null){
+            currentPage = Integer.parseInt(request.getParameter("page"));
+        }
+        request.setAttribute("listOfPrograms", programManager.findAllPrograms(RESULTS_PER_PAGE, currentPage));
+        request.setAttribute("currentPage", currentPage);
         request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
     }
 
