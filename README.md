@@ -1,4 +1,4 @@
-# Un navigateur de "Programmes" multi-tiers
+# AMT Projet 1: Navigateur de "Programmes"
 
 ## Introduction
 
