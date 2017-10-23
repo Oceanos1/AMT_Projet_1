@@ -19,6 +19,9 @@ Sous Windows, par défaut, celà correspond à:
 
 http://192.168.99.100:9090/AMT_Programs/home
 
+## Notes
+Le projet étant basé sur l'exemple AMT topology du cours, ainsi que le RESTDemoApp des Webcasts, certains fichiers ou chemins de ces projets restent dans ce projet.
+
 ## Auteurs
 * **Edward Ransome** 
 * **Michael Spierer**
