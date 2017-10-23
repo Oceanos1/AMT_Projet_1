@@ -29,19 +29,19 @@ public class ProgramManager implements IProgramManager{
     private DataSource dataSource;
 
     @Override
-    public Boolean addProgram(Program program) {
+    public Boolean addProgram(Language language, ProgramType type, double version) {
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (id, language, type, version) VALUES (?, ?, ?, ?);");
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO program (language, type, version) VALUES (?, ?, ?);");
             
-            pstmt.setInt(1, program.getId());
-            pstmt.setString(2, program.getLanguage().toString());
-            pstmt.setString(3, program.getProgramType().toString());
-            pstmt.setDouble(4, program.getVersion());
+            pstmt.setString(1, language.name());
+            pstmt.setString(2, type.name());
+            pstmt.setDouble(3, version);
             
             pstmt.executeUpdate();
             connection.close();
         }catch(SQLException ex){
+            System.out.println(ex.getMessage());
             return false;
         }
         return true;
@@ -59,26 +59,28 @@ public class ProgramManager implements IProgramManager{
             
             connection.close();
         }catch(SQLException ex){
+            System.out.println(ex.getMessage());
             return false;
         }
         return true;
     }
 
     @Override
-    public Boolean updateProgram(int id, Program program) {
+    public Boolean updateProgram(int id, Language language, ProgramType type, double version) {
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement pstmt = connection.prepareStatement("UPDATE program SET language = ?, type = ?, version = ? WHERE program.id = ?");
             
-            pstmt.setString(1, program.getLanguage().name());
-            pstmt.setString(2, program.getProgramType().name());
-            pstmt.setDouble(3, program.getVersion());
+            pstmt.setString(1, language.name());
+            pstmt.setString(2, type.name());
+            pstmt.setDouble(3, version);
             pstmt.setInt(4, id);
             
             pstmt.executeUpdate();
             
             connection.close();
         }catch(SQLException ex){
+            System.out.println(ex.getMessage());
             return false;
         }
         return true;

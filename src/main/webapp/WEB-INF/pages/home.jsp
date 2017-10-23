@@ -43,9 +43,73 @@
             <th> Page <c:out value="${currentPage}" /> </th>
             <th> <a href="/AMT_Programs/home?page=<c:out value="${currentPage + 1}" />" /> Next.</th>
         </table>
-        <form action = "generate" method="post">
-            Number to generate:<input type = "number" name = "numberToGenerate"><br><br>
-            <input type = "submit" value = "Generate!">
+        <br>
+        <form action = "generate" method="post" >
+            Number to generate:<input type = "number" name = "numberToGenerate">
+            <input type = "submit" value = "Generate!"><br>
         </form>
+
+        <form action = "CRUD" method="post" id="addProgram">
+            <input type="hidden" name="operation" value="add"/>
+            Add a program:   <input type = "number" step="0.1" name = "version" placeholder="Version">
+            <select name="language">
+                <option value="CPP">C++</option>
+                <option value="JAVASCRIPT">Javascript</option>
+                <option value="JAVA">Java</option>
+                <option value="C">C</option>
+                <option value="COBOL">COBOL</option>
+                <option value="PHP">PHP</option>
+            </select>
+
+            <select name="type">
+                <option value="WEBAPP">Web Application</option>
+                <option value="APPLICATION">Application</option>
+                <option value="APPLET">Applet</option>
+                <option value="GUI">GUI</option>
+                <option value="SERVER">SERVER</option>
+                <option value="SCRIPT">SCRIPT</option>
+            </select>
+
+            <input type = "submit" value = "Add"><br>
+        </form>
+
+
+
+
+
+        <form action = "CRUD" method="post" id="updateProgram">
+            <input type="hidden" name="operation" value="update"/>
+            Update a program: <input type="number" name="id" placeholder="ID">
+            <input type = "number" step="0.1" name = "version" placeholder="Version">
+            <select name="language">
+                <option value="CPP">C++</option>
+                <option value="JAVASCRIPT">Javascript</option>
+                <option value="JAVA">Java</option>
+                <option value="C">C</option>
+                <option value="COBOL">COBOL</option>
+                <option value="PHP">PHP</option>
+            </select>
+
+
+            <select name="type">
+                <option value="WEBAPP">Web Application</option>
+                <option value="APPLICATION">Application</option>
+                <option value="APPLET">Applet</option>
+                <option value="GUI">GUI</option>
+                <option value="SERVER">SERVER</option>
+                <option value="SCRIPT">SCRIPT</option>
+            </select>
+
+
+            <input type = "submit" value = "Update"><br>
+        </form>
+
+
+        <form action = "CRUD" method="post" id="deleteProgram">
+            <input type="hidden" name="operation" value="delete"/>
+            Delete a program: <input type = "number" name = "id" placeholder="ID">
+            <input type = "submit" value = "Delete"><br>
+        </form>
+
     </body>
 </html>

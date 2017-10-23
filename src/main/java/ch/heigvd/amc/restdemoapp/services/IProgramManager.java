@@ -1,5 +1,7 @@
 package ch.heigvd.amc.restdemoapp.services;
+import ch.heigvd.amc.restdemoapp.model.Language;
 import ch.heigvd.amc.restdemoapp.model.Program;
+import ch.heigvd.amc.restdemoapp.model.ProgramType;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ public interface IProgramManager {
      * @param program the program to add to the database
      * @return true if the program is correctly added to the database
      */
-    public Boolean addProgram(Program program);
+    public Boolean addProgram(Language language, ProgramType type, double version);
 
     /**
      * remove a program from the database
@@ -28,7 +30,7 @@ public interface IProgramManager {
      * @param program the new program to update
      * @return true if the program is correctly updated
      */
-    public Boolean updateProgram(int id, Program program);
+    public Boolean updateProgram(int id, Language language, ProgramType type, double version);
 
     /**
      * Return a specific program
