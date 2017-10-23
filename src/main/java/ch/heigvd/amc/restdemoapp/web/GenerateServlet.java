@@ -51,8 +51,10 @@ public class GenerateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        programManager.generateRandomPrograms(Integer.parseInt(request.getParameter("numberToGenerate").toString()));
+        String nString = request.getParameter("numberToGenerate").toString();
+        if(!nString.equals("")){
+            programManager.generateRandomPrograms(Integer.parseInt(nString));
+        }
         response.sendRedirect("/AMT_Programs/home");
     }
 
