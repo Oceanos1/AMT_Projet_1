@@ -14,7 +14,7 @@ Au lancement, la base de données est créée avec un script par le container My
 Le projet Java EE est implémenté avec le modèle MVC: La vue, le fichier .jsp, est ce que voit l'utilisateur: il affiche simplement les données fournies par le servlet et envoie des requêtes POST à celui-ci quand l'utilisateur souhaite modifier la liste de programmes. Les servlets permettent de gérer les requêtes POST et GET pour transmettre les informations entre le fichier .jsp et l'EJB. L'EJB, lui, manipule directement la base de données et les objets du modèle (des objets "programmes", composés d'une ID, un language, un type et une version).
 
 ## Déploiement
-La commande `docker-compose up --build`va automatiquement déployer le WAR dans le container Wildfly, ainsi que créer la base de données et gérer la connection à celle ci. L'application sera accessible sur le port `9090` à l'adresse `/AMT_Programs/home`.
+La commande `docker-compose up --build` depuis le dossier `topology-amt/` contenant le `docker-compose.yml` va automatiquement déployer le WAR dans le container Wildfly, ainsi que créer la base de données et gérer la connection à celle ci. L'application sera accessible sur le port `9090` à l'adresse `/AMT_Programs/home`.
 Sous Windows, par défaut, celà correspond à:
 
 http://192.168.99.100:9090/AMT_Programs/home
