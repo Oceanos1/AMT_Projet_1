@@ -9,5 +9,5 @@ CREATE TABLE program (
     version DOUBLE DEFAULT NULL
 );
 
-INSERT INTO program (id, language, type, version) VALUES (1, "C", "Script", 1.0);
-INSERT INTO program (id, language, type, version) VALUES (2, "C", "Script", 2.0);
+INSERT INTO program (id, language, type, version) VALUES (1, "C", "SCRIPT", 1.0);
+INSERT INTO program (id, language, type, version) VALUES (2, "C", "SCRIPT", 2.0);
